@@ -1,0 +1,26 @@
+# LaTeX intermediates
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.xdv
+
+# Local inspection artifacts
+page-*.png
+chap3-end-*.png
+mythesis-fixed.pdf
+missfont.log
+
+# macOS
+.DS_Store
