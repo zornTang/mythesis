@@ -22,5 +22,14 @@ chap3-end-*.png
 mythesis-fixed.pdf
 missfont.log
 
+# LaTeX nomenclature/index artifacts
+*.ilg
+*.nlo
+*.nls
+*.synctex(busy)
+
+# Analysis outputs
+analysis_outputs/
+
 # macOS
 .DS_Store
