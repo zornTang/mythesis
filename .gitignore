@@ -31,5 +31,8 @@ missfont.log
 # Analysis outputs
 analysis_outputs/
 
+# Large raw data files (>100MB, not suitable for git)
+analysis/depmap_atp6v1b2/data/CRISPRGeneEffect_*.csv
+
 # macOS
 .DS_Store

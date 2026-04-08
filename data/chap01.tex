@@ -16,7 +16,7 @@
 
 蛋白质必需性（protein essentiality）是生命科学与系统生物学研究中的核心概念，通常指编码该蛋白的基因在特定生物体系中对生物体的生存、发育及关键生理功能维持具有不可替代性\cite{zhang2016predicting,xiao2015identifying}。必需蛋白作为细胞功能网络中的关键分子节点，广泛参与基础代谢过程、能量稳态维持、信号转导调控及细胞周期控制等核心生命活动，其功能缺失往往导致细胞死亡、发育异常或个体功能障碍\cite{jeong2001lethality}。
 
-在功能基因组学层面，蛋白质必需性通常通过基因扰动后细胞适应度（fitness）变化进行定量评估。随着成簇规律间隔短回文重复序列及其相关蛋白9技术（clustered regularly interspaced short palindromic repeats-associated protein 9, CRISPR-Cas9）的发展，研究者可构建包含大量单导RNA（single-guide RNA, sgRNA）的混合文库，在细胞群体中进行竞争性生长筛选，通过测序分析sgRNA丰度变化来推断基因对细胞存活的贡献\cite{shalem2014genome}。为提高筛选结果的可靠性，研究者发展了多种统计分析与误差校正方法，例如用于sgRNA富集分析的基于模型的全基因组CRISPR-Cas9敲除分析方法（Model-based Analysis of Genome-wide CRISPR-Cas9 Knockout, MAGeCK）算法，以及用于校正拷贝数变异影响的CERES拷贝数效应校正模型\cite{meyers2017computational}。这些方法的建立使得在全基因组尺度上系统识别必需基因进而筛选必需蛋白成为可能。
+在功能基因组学层面，蛋白质必需性通常通过基因扰动后细胞适应度（fitness）变化进行定量评估。随着成簇规律间隔短回文重复序列及其相关蛋白9技术（clustered regularly interspaced short palindromic repeats-associated protein 9, CRISPR-Cas9）的发展，研究者可构建包含大量单导RNA（single-guide RNA, sgRNA）的混合文库，在细胞群体中进行竞争性生长筛选，通过测序分析sgRNA丰度变化来推断基因对细胞存活的贡献\cite{shalem2014genome}。为提高筛选结果的可靠性，研究者发展了多种统计分析与误差校正方法，例如用于sgRNA富集分析的基于模型的全基因组CRISPR-Cas9敲除分析方法（Model-based Analysis of Genome-wide CRISPR-Cas9 Knockout, MAGeCK）算法，以及用于校正拷贝数变异影响的CERES拷贝数效应校正模型\cite{li2014mageck,meyers2017computational}。这些方法的建立使得在全基因组尺度上系统识别必需基因进而筛选必需蛋白成为可能。
 
 根据功能重要性的广泛程度，必需蛋白可进一步划分为“核心必需（core essential）”与“情境特异必需（context-specific essential）”。核心必需蛋白在多种细胞类型中均对细胞存活与基本生命活动具有关键作用，反映其在维持普遍生理过程中的基础地位；而情境特异必需蛋白则仅在特定遗传背景、分化阶段或功能状态下发挥不可替代作用。这强调，蛋白质的重要性并非固定不变，而是受到细胞类型与生理状态的调控\cite{tsherniak2017defining}。
 
@@ -98,7 +98,7 @@ CRISPR-Cas9技术的出现显著提升了基因组编辑的精确性与通量，
 
 在深度学习介入初期，研究重点在于利用深度神经网络自动学习序列表征，以替代传统依赖于专家经验的人工特征工程（如氨基酸组成、自相关系数等）。
 卷积神经网络（convolutional neural network, CNN）通过多层局部卷积滤波器提取序列片段中的模式特征，在蛋白质二级结构预测 \cite{wang2016protein} 以及翻译后修饰位点识别 \cite{wang2017musitedeep} 等任务中展现出较强的局部特征建模能力。
-由于卷积算子的局部感受野限制，传统CNN在缺乏多层堆叠或扩张卷积机制的情况下，难以充分整合蛋白序列中的长程依赖关系。为弥补这一不足，循环神经网络（recurrent neural network, RNN）及其变体长短期记忆网络（long short-term memory, LSTM）被引入序列建模领域 \cite{hochreiter1997long}，通过递归结构在时间维度上传递隐藏状态，从而在一定程度上缓解长程依赖建模中的梯度消失问题。随后，多项研究将双向LSTM应用于蛋白结构与功能预测任务，验证其在长序列建模中的优势。
+由于卷积算子的局部感受野限制，传统CNN在缺乏多层堆叠或扩张卷积机制的情况下，难以充分整合蛋白序列中的长程依赖关系。为弥补这一不足，循环神经网络（recurrent neural network, RNN）及其变体长短期记忆网络（long short-term memory, LSTM）被引入序列建模领域 \cite{hochreiter1997long}，通过递归结构在时间维度上传递隐藏状态，从而在一定程度上缓解长程依赖建模中的梯度消失问题。随后，多项研究将双向LSTM应用于蛋白结构与功能预测任务，验证其在长序列建模中的优势\cite{hanson2017disorder,heffernan2017capturing}。
 尽管监督学习方法在特定物种数据集上能够取得较高预测精度，但其性能高度依赖充足且分布一致的标注数据。必需基因的实验鉴定通常依赖饱和转座子诱变（Tn-Seq）等高通量技术 \cite{vanopijnen2013transposon}，该类实验流程复杂、成本高昂，且现有数据主要集中于少数模式生物 \cite{zhang2004deg,hutchison2016design}。在标注数据匮乏或物种分布发生变化的情况下，监督模型易受到过拟合与分布偏移问题的影响，从而导致泛化性能显著下降。
 
 随着结构生物学的发展，研究者意识到蛋白质的功能及其必需性不仅取决于线性序列，更取决于其三维空间拓扑以及在复杂PPI中的交互地位。
